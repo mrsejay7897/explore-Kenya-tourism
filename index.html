@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Kenya Tourism</title>
+</head>
+<body>
+    <section class="hero">
+    <h2>Discover the Magic of Kenya</h2>
+
+    <p>
+        Explore breathtaking wildlife, beautiful landscapes,
+        rich culture, and unforgettable adventures with us.
+    </p>
+
+    <a href="#destinations">
+    <button>Start Your Adventure</button>
+</a>
+</section>
+    <h1>Explore Kenya Tourism</h1>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Destinations</a>
+        <a href="#">About Us</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <a href="#destinations">
+        <button>Start Your Adventure</button>
+
+    </a>
+    <h2 id="destinations">Popular Destinations</h2>
+
+<section class="destinations">
+    ...
+</section>
+<section class="destinations">
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801" alt="Maasai Mara Safari">
+        <h3>Maasai Mara</h3>
+        <p>Experience Kenya's world-famous wildlife and unforgettable safari adventures.</p>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b" alt="Mount Kenya">
+        <h3>Mount Kenya</h3>
+        <p>Discover breathtaking mountain scenery, hiking adventures and beautiful nature.</p>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Diani Beach">
+        <h3>Diani Beach</h3>
+        <p>Relax on beautiful beaches and enjoy an unforgettable Kenyan coastal experience.</p>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801" alt="Lake Nakuru">
+        <h3>Lake Nakuru</h3>
+        <p>Explore stunning landscapes and discover Kenya's fascinating wildlife.</p>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1535338454770-8be927b5a00b" alt="Nairobi National Park">
+        <h3>Nairobi National Park</h3>
+        <p>Enjoy a unique wildlife experience just outside Kenya's capital city.</p>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5" alt="Amboseli National Park">
+        <h3>Amboseli National Park</h3>
+        <p>See magnificent elephants and enjoy spectacular views of Mount Kilimanjaro.</p>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7" alt="Lake Victoria">
+        <h3>Lake Victoria</h3>
+        <p>Experience boat tours, beautiful scenery and the rich culture around the lake.</p>
+    </div>
+
+</section>
+<section class="cta">
+    <h2>Ready to Explore Kenya?</h2>
+    <p>Let us help you create an unforgettable Kenyan adventure.</p>
+    <a href="#contact">
+        <button>Plan Your Trip</button>
+    </a>
+</section>
+<div class="contact-info">
+          <h3>Prefer to Contact Us Directly?</h3>
+    <p>📞 Phone: <a href="tel:+254714177622">+254 714 177 622</a></p>
+    <p>💬 WhatsApp: <a href="https://wa.me/254102100048">+254 102 100 048</a></p>
+    <a class="whatsapp-button" href="https://wa.me/254102100048?text=Hello%20Explore%20Kenya%20Tourism,%20I%20would%20like%20to%20plan%20a%20trip." target="_blank">
+    💬 Chat With Us on WhatsApp
+</a>
+    <p>📧 Email: <a href="mailto:thuojunior938@gmail.com">thuojunior938@gmail.com</a></p>
+</div>
+<section id="contact" class="contact">
+    <h2>Plan Your Trip With Us</h2>
+    <p>Have a question or want to plan your Kenyan adventure? Get in touch with us.</p>
+
+    <form action="https://formspree.io/f/mbgrgzad" method="POST">
+    <input type="text" name="name" placeholder="Full Name" required>
+
+    <input type="email" name="email" placeholder="Email Address" required>
+
+    <select name="location" required>
+    <option value="" disabled selected>Where are you from?</option>
+    <option>Kenya</option>
+    <option>Uganda</option>
+    <option>Tanzania</option>
+    <option>Rwanda</option>
+    <option>South Africa</option>
+    <option>United States</option>
+    <option>United Kingdom</option>
+    <option>Canada</option>
+    <option>Germany</option>
+    <option>France</option>
+    <option>Australia</option>
+    <option>Other</option>
+</select>
+
+    <select name="destination" required>
+    <option value="" disabled selected>Choose Your Preferred Destination</option>
+    <option value="Maasai Mara">Maasai Mara</option>
+    <option value="Mount Kenya">Mount Kenya</option>
+    <option value="Diani Beach">Diani Beach</option>
+    <option value="Lake Nakuru">Lake Nakuru</option>
+    <option value="Nairobi National Park">Nairobi National Park</option>
+    <option value="Amboseli National Park">Amboseli National Park</option>
+    <option value="Lake Victoria">Lake Victoria</option>
+</select>
+
+    <input type="date" name="travel_date">
+
+    <input type="number" name="travelers" placeholder="Number of Travelers" min="1">
+
+    <textarea name="message" placeholder="Tell us about your trip"></textarea>
+
+    <button type="submit">Send Inquiry</button>
+</form>
+</section>
+
+</section>
+
+    <ul>
+        <li>Maasai Mara National Reserve</li>
+        <li>Mount Kenya</li>
+        <li>Diani Beach</li>
+        <li>Lake Nakuru</li>
+        <li>Amboseli National Park</li>
+        <li>Lake Victoria</li>
+        <li>Nairobi National Park</li>
+    </ul>
+</body>
+</html>
+.destinations {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 40px 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    width: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card h3 {
+    color: #006400;
+    font-size: 24px;
+}
+
+.card p {
+    padding: 0 15px 20px;
+    font-size: 16px;
+}
+.destinations {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 40px 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    width: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.card h3 {
+    color: #006400;
+    font-size: 24px;
+}
+
+.card p {
+    padding: 0 15px 20px;
+    font-size: 16px;
+}
