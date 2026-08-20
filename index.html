@@ -5,9 +5,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explore Kenya Tourism</title>
+    <style>
+.destinations {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 40px 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    width: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.card h3 {
+    color: #006400;
+    font-size: 24px;
+}
+
+.card p {
+    padding: 0 15px 20px;
+    font-size: 16px;
+}
+</style>
 </head>
 <body>
-    <section class="hero">
+    <header class="site-header">
+    <h1>Explore Kenya Tourism</h1>
+    <p>Discover Kenya. Experience the Adventure.</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#destinations">Destinations</a>
+    <a href="#about">About Us</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section class="hero" id="home">
     <h2>Discover the Magic of Kenya</h2>
 
     <p>
@@ -16,88 +63,216 @@
     </p>
 
     <a href="#destinations">
-    <button>Start Your Adventure</button>
-</a>
-</section>
-    <h1>Explore Kenya Tourism</h1>
-
-    <nav>
-        <a href="#">Home</a>
-        <a href="#destinations">Destinations</a>
-        <a href="#about">About Us</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-    <a href="#destinations">
         <button>Start Your Adventure</button>
-
     </a>
-    <h2 id="destinations">Popular Destinations</h2>
-
-<section class="destinations">
-    ...
 </section>
+
+<h2 id="destinations">Popular Destinations</h2>
+<div class="destination-search">
+    <input
+        type="text"
+        id="destinationSearch"
+        placeholder="Search destinations..."
+        onkeyup="searchDestinations()"
+    >
+    <button type="button" onclick="searchDestinations()">🔍</button>
+</div>
+
 <section class="destinations">
 
-    <div class="card">
+    <div class="card" onclick="showDestination('mara')">
         <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801" alt="Maasai Mara Safari">
         <h3>Maasai Mara</h3>
         <p>Experience Kenya's world-famous wildlife and unforgettable safari adventures.</p>
+        <button type="button">View Details</button>
     </div>
 
-    <div class="card">
+    <div class="card" onclick="showDestination('mountkenya')">
         <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b" alt="Mount Kenya">
         <h3>Mount Kenya</h3>
         <p>Discover breathtaking mountain scenery, hiking adventures and beautiful nature.</p>
+        <button type="button" onclick="showDestination('mountkenya')">View Details</button>
     </div>
 
-    <div class="card">
+    <div class="card" onclick="showDestination('diani')">
         <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Diani Beach">
         <h3>Diani Beach</h3>
         <p>Relax on beautiful beaches and enjoy an unforgettable Kenyan coastal experience.</p>
+        <button type="button" onclick="showDestination('diani')">View Details</button>
     </div>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801" alt="Lake Nakuru">
+    <div class="card" onclick="showDestination('nakuru')">
+        <img src="https://images.unsplash.com/photo-1549366021-9f761d450615?auto=format&fit=crop&w=900&q=80" alt="Lake Nakuru">
         <h3>Lake Nakuru</h3>
         <p>Explore stunning landscapes and discover Kenya's fascinating wildlife.</p>
+       <button type="button" onclick="showDestination('nakuru')">View Details</button> 
     </div>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1535338454770-8be927b5a00b" alt="Nairobi National Park">
+    <div class="card" onclick="showDestination('nairobi')">
+        <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=80" alt="Nairobi National Park">
         <h3>Nairobi National Park</h3>
         <p>Enjoy a unique wildlife experience just outside Kenya's capital city.</p>
+        <button type="button" onclick="showDestination('nairobi')">View Details</button>
     </div>
 
-    <div class="card">
+    <div class="card" onclick="showDestination('amboseli')">
         <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5" alt="Amboseli National Park">
         <h3>Amboseli National Park</h3>
         <p>See magnificent elephants and enjoy spectacular views of Mount Kilimanjaro.</p>
+        <button type="button" onclick="showDestination('amboseli')">View Details</button>
     </div>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7" alt="Lake Victoria">
+    <div class="card" onclick="showDestination('victoria')">
+        <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80" alt="Lake Victoria">
         <h3>Lake Victoria</h3>
         <p>Experience boat tours, beautiful scenery and the rich culture around the lake.</p>
+        <button type="button" onclick="showDestination('victoria')">View Details</button>
     </div>
 
 </section>
+
+<div id="destination-details" class="destination-details" style="display:none;">
+
+    <h2 id="destination-title"></h2>
+
+    <img id="destination-image"
+         src=""
+         alt=""
+         style="width:70%; max-height:300px; object-fit:cover; display:block; margin:0 auto 25px; border-radius:15px;">
+
+    <div id="destination-content"></div>
+
+    <button onclick="closeDestination()">Close</button>
+
+</div>
     <section id="about" class="about">
-    <h2>About Explore Kenya Tourism</h2>
+    <h2>About Us</h2>
 
     <p>
-        Explore Kenya Tourism is your guide to discovering the beauty,
-        culture, wildlife and unforgettable experiences of Kenya.
-        From exciting safari adventures in the Maasai Mara to the
-        beautiful beaches of Diani, we help travelers discover
-        destinations worth remembering.
+        We help travelers discover the beauty of Kenya through unforgettable
+        wildlife experiences, breathtaking landscapes, rich culture, and
+        carefully planned adventures.
     </p>
 
     <p>
-        Our goal is to make exploring Kenya simple, enjoyable and
-        memorable by connecting travelers with amazing destinations
-        and experiences across the country.
+        Whether you're looking for a safari, a relaxing beach holiday,
+        mountain adventure, or a cultural experience, we're here to help
+        you plan your journey.
     </p>
+</section>
+<section class="why-us">
+    <h2>Why Choose Us?</h2>
+
+    <div class="why-us-grid">
+        <div class="why-us-card">
+            <h3>🦁 Local Experience</h3>
+            <p>Discover Kenya with people who understand its destinations and experiences.</p>
+        </div>
+
+        <div class="why-us-card">
+            <h3>🗺️ Custom Trips</h3>
+            <p>We help you create a trip that matches your interests, time and budget.</p>
+        </div>
+
+        <div class="why-us-card">
+            <h3>🤝 Personal Support</h3>
+            <p>Get help planning your journey and making the most of your Kenyan adventure.</p>
+        </div>
+
+        <div class="why-us-card">
+            <h3>🌍 Unforgettable Experiences</h3>
+            <p>From wildlife and beaches to culture and mountains, there's something for every traveler.</p>
+        </div>
+    </div>
+</section>
+<section id="faq" class="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+    <button type="button" class="faq-question" onclick="toggleFAQ(this)">
+        What is the best time to visit Kenya?
+        <span>+</span>
+    </button>
+
+    <p class="faq-answer">
+        The best time depends on the experience you want. Kenya offers wildlife, beach, mountain and cultural experiences throughout the year.
+    </p>
+</div>
+
+    <div class="faq-item">
+    <button type="button" class="faq-question" onclick="toggleFAQ(this)">
+        Can I customize my trip?
+        <span>+</span>
+    </button>
+
+    <p class="faq-answer">
+        Yes. You can tell us your preferred destinations, travel dates, activities, number of travelers and budget.
+    </p>
+</div>
+
+    <div class="faq-item">
+    <button type="button" class="faq-question" onclick="toggleFAQ(this)">
+        Can you arrange airport transfers?
+        <span>+</span>
+    </button>
+
+    <p class="faq-answer">
+        Let us know your arrival details when making an inquiry, and we can discuss available transfer options.
+    </p>
+</div>
+
+    <div class="faq-item">
+    <button type="button" class="faq-question" onclick="toggleFAQ(this)">
+        How far in advance should I book?
+        <span>+</span>
+    </button>
+
+    <p class="faq-answer">
+        Booking early is recommended, especially during busy travel periods, so there is more flexibility with accommodation and activities.
+    </p>
+</div>
+
+    <div class="faq-item">
+    <button type="button" class="faq-question" onclick="toggleFAQ(this)">
+        Which destinations can I visit?
+        <span>+</span>
+    </button>
+
+    <p class="faq-answer">
+        Our featured destinations include Maasai Mara, Mount Kenya, Diani Beach, Lake Nakuru, Nairobi National Park, Amboseli and Lake Victoria.
+    </p>
+</div>
+<section class="how-it-works">
+    <h2>What Happens After You Send an Inquiry?</h2>
+
+    <div class="steps-grid">
+
+        <div class="step-card">
+            <span class="step-number">1</span>
+            <h3>Send Your Inquiry</h3>
+            <p>Tell us your destination, travel dates, number of travelers and what you'd like to experience.</p>
+        </div>
+
+        <div class="step-card">
+            <span class="step-number">2</span>
+            <h3>We Review Your Request</h3>
+            <p>We look at your preferences and the type of Kenyan adventure you're interested in.</p>
+        </div>
+
+        <div class="step-card">
+            <span class="step-number">3</span>
+            <h3>We Contact You</h3>
+            <p>We'll discuss your request, answer your questions and help you explore suitable options.</p>
+        </div>
+
+        <div class="step-card">
+            <span class="step-number">4</span>
+            <h3>Plan Your Adventure</h3>
+            <p>Once you're happy with the plan, we'll help you take the next step toward your Kenyan adventure.</p>
+        </div>
+
+    </div>
+</section>
 </section>
 <section class="cta">
     <h2>Ready to Explore Kenya?</h2>
@@ -115,6 +290,91 @@
 </a>
     <p>📧 Email: <a href="mailto:thuojunior938@gmail.com">thuojunior938@gmail.com</a></p>
 </div>
+<section class="how-it-works">
+    <h2>How It Works</h2>
+
+    <div class="how-it-works-grid">
+
+        <div class="how-it-works-card">
+            <div class="how-icon">1</div>
+            <h3>Tell Us What You Want</h3>
+            <p>
+                Choose your destination, travel dates, number of travellers
+                and the experiences you're interested in.
+            </p>
+        </div>
+
+        <div class="how-it-works-card">
+            <div class="how-icon">2</div>
+            <h3>We Plan With You</h3>
+            <p>
+                We review your request and contact you to discuss suitable
+                options for your trip.
+            </p>
+        </div>
+
+        <div class="how-it-works-card">
+            <div class="how-icon">3</div>
+            <h3>Confirm Your Trip</h3>
+            <p>
+                Once you're happy with the plan, we'll discuss the next
+                steps for arranging your journey.
+            </p>
+        </div>
+
+    </div>
+</section>
+<section class="travel-resources">
+    <h2>Plan Your Kenya Trip</h2>
+
+    <p class="resources-intro">
+        Helpful resources to make planning your Kenya adventure easier.
+    </p>
+
+    <div class="resources-grid">
+
+        <div class="resource-card">
+            <div class="resource-icon">🏨</div>
+            <h3>Accommodation</h3>
+            <p>
+                Find a comfortable place to stay near your destination
+                and activities.
+            </p>
+            <a href="#" class="resource-button">Explore Stays</a>
+        </div>
+
+        <div class="resource-card">
+            <div class="resource-icon">✈️</div>
+            <h3>Flights</h3>
+            <p>
+                Plan your journey to Kenya and explore available flight
+                options.
+            </p>
+            <a href="#" class="resource-button">Explore Flights</a>
+        </div>
+
+        <div class="resource-card">
+            <div class="resource-icon">🚐</div>
+            <h3>Airport Transfers</h3>
+            <p>
+                Make your arrival easier by planning transportation from
+                the airport.
+            </p>
+            <a href="#" class="resource-button">Explore Transfers</a>
+        </div>
+
+        <div class="resource-card">
+            <div class="resource-icon">🛡️</div>
+            <h3>Travel Insurance</h3>
+            <p>
+                Consider travel insurance before starting your Kenya
+                adventure.
+            </p>
+            <a href="#" class="resource-button">Learn More</a>
+        </div>
+
+    </div>
+</section>
 <section id="contact" class="contact">
     <h2>Plan Your Trip With Us</h2>
     <p>Have a question or want to plan your Kenyan adventure? Get in touch with us.</p>
@@ -151,11 +411,13 @@
     <option value="Lake Victoria">Lake Victoria</option>
 </select>
 
-    <input type="date" name="travel_date">
+    <label for="travel-date">Travel Date</label>
+    <small>Choose your preferred travel date</small>
+<input type="date" id="travel-date" name="travel_date">
 
     <input type="number" name="travelers" placeholder="Number of Travelers" min="1">
 
-    <textarea name="message" placeholder="Tell us about your trip"></textarea>
+    <textarea name="message" placeholder="Tell us about your trip — destination, dates, activities, budget, or special requests"></textarea>
 
     <button type="submit">Send Inquiry</button>
 </form>
@@ -172,5 +434,628 @@
         <li>Lake Victoria</li>
         <li>Nairobi National Park</li>
     </ul>
+    <script>
+    function showDestination(destination) {
+        
+    const details = document.getElementById("destination-details");
+    const title = document.getElementById("destination-title");
+    const content = document.getElementById("destination-content");
+    const image = document.getElementById("destination-image");
+    document.querySelector(".destinations").style.display = "none";
+if (destination === "mara") {
+    image.src = "https://images.unsplash.com/photo-1535941339077-2dd1c7963098?auto=format&fit=crop&w=1200&q=80";
+    image.alt = "Maasai Mara wildlife";
+
+    title.textContent = "Maasai Mara";
+
+        content.innerHTML = `
+            <p>
+                The Maasai Mara is one of Kenya's most celebrated wildlife
+                destinations, famous for its Big Five wildlife and the annual
+                Great Migration.
+            </p>
+            <p style="text-align:center; margin-top:25px;">
+    <a href="https://maasaimara.ke/" target="_blank" rel="noopener noreferrer"
+       style="display:inline-block; padding:13px 24px; background:#006400; color:white; text-decoration:none; border-radius:25px; font-weight:bold;">
+        🌍 Explore Official Maasai Mara Website
+    </a>
+</p>
+
+            <h3>Recommended Experiences</h3>
+
+<div class="experience-grid">
+
+    <div class="experience">
+        <h4>🦁 Big Five Game Drives</h4>
+        <p>Explore the Mara ecosystem and look for lion, leopard, elephant, buffalo and rhino.</p>
+    </div>
+
+    <div class="experience">
+        <h4>🦓 Great Migration</h4>
+        <p>Witness one of Africa's greatest wildlife spectacles when the migration reaches the Mara.</p>
+    </div>
+
+    <div class="experience">
+        <h4>🎈 Hot-Air Balloon Safari</h4>
+        <p>Experience the Mara plains from above around sunrise.</p>
+    </div>
+
+    <div class="experience">
+        <h4>🥾 Guided Nature Walks</h4>
+        <p>Explore the environment on foot with a qualified local guide.</p>
+    </div>
+
+    <div class="experience">
+        <h4>🛖 Maasai Cultural Experience</h4>
+        <p>Learn about Maasai traditions, culture and way of life.</p>
+    </div>
+
+    <div class="experience">
+        <h4>🌙 Night Game Drives</h4>
+        <p>Discover the nocturnal side of the Mara where these activities are permitted.</p>
+    </div>
+
+</div>
+
+            <div style="background:#f5f5f5; padding:25px; margin:25px 35px; border-radius:14px;">
+    <h3>2026 Park Entry Information</h3>
+
+    <p>
+        Published 2026 information lists seasonal entry rates for
+        non-resident visitors. Adult rates are currently listed at
+        USD 100 for January–June and USD 200 for July–December.
+    </p>
+
+    <p>
+        Fees can vary by visitor category and reserve or conservancy
+        area, so please confirm the applicable current fee before
+        making payment.
+    </p>
+</div>
+            </p>
+            
+            <h3>Ready to Visit?</h3>
+
+            <p>
+                Tell us your preferred travel dates, number of travellers and
+                the experiences you're interested in. We'll help you plan
+                your Maasai Mara trip.
+            </p>
+
+            <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+    🧭 Plan This Trip With Us
+</button>
+        `;
+
+        details.style.display = "block";
+        details.scrollIntoView({ behavior: "smooth" });
+    }
+    if (destination === "mountkenya") {
+    image.src = "https://images.unsplash.com/photo-1531168556467-80aace0d0144?auto=format&fit=crop&w=1200&q=80";
+    image.alt = "Mount Kenya";
+
+    title.textContent = "Mount Kenya";
+
+        content.innerHTML = `
+            <p>
+                Mount Kenya is Africa's second-highest mountain and is known
+                for spectacular scenery, alpine landscapes, forests and
+                unforgettable hiking experiences.
+            </p>
+
+            <p style="text-align:center; margin:25px 35px;">
+    <a href="https://kws.go.ke/park/mt-kenya-national-park/" target="_blank" rel="noopener noreferrer"
+       style="display:inline-block; padding:13px 24px; background:#006400; color:white; text-decoration:none; border-radius:25px; font-weight:bold;">
+        🌍 Official Mount Kenya Park Information
+    </a>
+</p>
+            <h3>Recommended Experiences</h3>
+
+            <div class="experience-grid">
+
+                <div class="experience">
+                    <h4>🏔️ Mountain Hiking</h4>
+                    <p>Explore the mountain through established hiking routes and beautiful high-altitude scenery.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>🥾 Trekking</h4>
+                    <p>Enjoy multi-day trekking adventures through forests, valleys and mountain landscapes.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>🌲 Forest Experience</h4>
+                    <p>Discover the lower slopes and surrounding forest ecosystem with a local guide.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>📸 Scenic Views</h4>
+                    <p>Enjoy spectacular mountain landscapes and opportunities for photography.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>🦌 Wildlife</h4>
+                    <p>Explore the mountain ecosystem and look out for wildlife in the surrounding areas.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>🌄 Mountain Adventure</h4>
+                    <p>Plan an unforgettable outdoor adventure around one of Kenya's most iconic landscapes.</p>
+                </div>
+
+            </div>
+
+            <h3>Planning Your Visit</h3>
+
+            <p>
+                Mountain routes, access requirements, guide arrangements and
+                applicable fees can vary depending on the route and type of
+                visit. Check the current official requirements before booking.
+            </p>
+
+            <h3>Ready to Visit?</h3>
+
+            <p>
+                Tell us your preferred dates, number of travellers and the type
+                of mountain experience you're interested in.
+            </p>
+
+            <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+                🧭 Plan This Trip With Us
+            </button>
+        `;
+
+        details.style.display = "block";
+        details.scrollIntoView({ behavior: "smooth" });
+    }
+    if (destination === "diani") {
+        image.src = "https://images.unsplash.com/photo-1505881502353-a1986add3762?auto=format&fit=crop&w=1200&q=80";
+        title.textContent = "Diani Beach";
+
+        content.innerHTML = `
+            <p>
+                Diani Beach is one of Kenya's most popular coastal destinations,
+                known for its white-sand beaches, warm Indian Ocean waters,
+                marine life and relaxed coastal atmosphere.
+            </p>
+            <p style="text-align:center; margin:25px 35px;">
+    <a href="https://tourkenya.go.ke/tour/diani-beach/" target="_blank" rel="noopener noreferrer"
+       style="display:inline-block; padding:13px 24px; background:#006400; color:white; text-decoration:none; border-radius:25px; font-weight:bold;">
+        🌍 Official Diani Beach Information
+    </a>
+</p>
+
+            <h3>Recommended Experiences</h3>
+
+            <div class="experience-grid">
+
+                <div class="experience">
+                    <h4>🏖️ Beach Relaxation</h4>
+                    <p>Enjoy the beautiful white-sand beach and warm Indian Ocean waters.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>🤿 Snorkelling</h4>
+                    <p>Explore the coastal waters and discover the marine environment.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>🐠 Marine Life</h4>
+                    <p>Discover the colourful marine life found along Kenya's coast.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>⛵ Boat Adventures</h4>
+                    <p>Enjoy coastal boat trips and beautiful views across the Indian Ocean.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>🐬 Ocean Experiences</h4>
+                    <p>Look for marine wildlife and enjoy the natural beauty of the coast.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>🌴 Coastal Culture</h4>
+                    <p>Experience the culture, food and history of Kenya's beautiful coast.</p>
+                </div>
+
+            </div>
+
+            <h3>Planning Your Visit</h3>
+
+            <p>
+                Activities, operators and applicable fees can vary, so confirm
+                current prices and availability before booking.
+            </p>
+
+            <h3>Ready to Visit?</h3>
+
+            <p>
+                Tell us your preferred dates, number of travellers and the
+                coastal experiences you'd like to enjoy.
+            </p>
+
+            <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+                🧭 Plan This Trip With Us
+            </button>
+        `;
+
+        details.style.display = "block";
+        details.scrollIntoView({ behavior: "smooth" });
+    }
+    if (destination === "nakuru") {
+        image.src = "https://images.unsplash.com/photo-1535338454770-8be927b5a00b?auto=format&fit=crop&w=1200&q=80";
+        title.textContent = "Lake Nakuru";
+
+        content.innerHTML = `
+            <p>
+                Lake Nakuru is a beautiful wildlife destination in Kenya,
+                known for its lake, surrounding landscapes, birdlife and
+                opportunities to see wildlife in the national park.
+            </p>
+            <p style="text-align:center; margin:25px 35px;">
+    <a href="https://kws.go.ke/park/lake-nakuru-national-park/" target="_blank" rel="noopener noreferrer"
+       style="display:inline-block; padding:13px 24px; background:#006400; color:white; text-decoration:none; border-radius:25px; font-weight:bold;">
+        🌍 Official Lake Nakuru Park Information
+    </a>
+</p>
+
+            <h3>Recommended Experiences</h3>
+
+            <div class="experience-grid">
+
+                <div class="experience">
+                    <h4>🦏 Rhino Viewing</h4>
+                    <p>Look for rhinos and other wildlife within the park's protected areas.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>🦒 Wildlife Drives</h4>
+                    <p>Explore the park on a game drive and discover its diverse wildlife.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>🦩 Bird Watching</h4>
+                    <p>Discover the many bird species found around the lake and its surroundings.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>📸 Photography</h4>
+                    <p>Capture beautiful landscapes, wildlife and the spectacular Rift Valley scenery.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>🌳 Nature Exploration</h4>
+                    <p>Explore the park's varied habitats and natural surroundings.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>🌅 Scenic Views</h4>
+                    <p>Enjoy spectacular views of the lake and the surrounding Great Rift Valley.</p>
+                </div>
+
+            </div>
+
+            <h3>Planning Your Visit</h3>
+
+            <p>
+                Park access, activities and applicable fees can vary.
+                Confirm the current official requirements and charges before
+                making your booking.
+            </p>
+
+            <h3>Ready to Visit?</h3>
+
+            <p>
+                Tell us your preferred dates, number of travellers and the
+                wildlife experiences you're interested in.
+            </p>
+
+            <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+                🧭 Plan This Trip With Us
+            </button>
+        `;
+
+        details.style.display = "block";
+        details.scrollIntoView({ behavior: "smooth" });
+    }
+    if (destination === "nairobi") {
+    image.src = "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1200&q=80";
+    image.alt = "Nairobi National Park wildlife";
+
+    title.textContent = "Nairobi National Park";
+
+        content.innerHTML = `
+            <p>
+                Nairobi National Park is a unique wildlife destination located
+                close to Kenya's capital city. Visitors can experience wildlife
+                against the backdrop of Nairobi's skyline.
+            </p>
+            <p style="text-align:center; margin:25px 35px;">
+    <a href="https://kws.go.ke/park/nairobi-national-park/" target="_blank" rel="noopener noreferrer"
+       style="display:inline-block; padding:13px 24px; background:#006400; color:white; text-decoration:none; border-radius:25px; font-weight:bold;">
+        🌍 Official Nairobi National Park Information
+    </a>
+</p>
+
+            <h3>Recommended Experiences</h3>
+
+            <div class="experience-grid">
+
+                <div class="experience">
+                    <h4>🦁 Game Drives</h4>
+                    <p>Explore the park and look for lions, giraffes, zebras, buffalo and other wildlife.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>🦏 Rhino Viewing</h4>
+                    <p>Look for black rhinos and other wildlife within the protected park ecosystem.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>🦒 Wildlife Photography</h4>
+                    <p>Capture wildlife and landscapes with the Nairobi skyline creating a unique backdrop.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>🐃 Wildlife Watching</h4>
+                    <p>Discover the variety of animals that live within the park's grasslands and woodland.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>🌅 Sunrise Safari</h4>
+                    <p>Start your wildlife adventure early and experience the park during the cooler morning hours.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>🌿 Nature Experience</h4>
+                    <p>Enjoy the park's landscapes and natural environment just outside the city.</p>
+                </div>
+
+            </div>
+
+            <h3>Planning Your Visit</h3>
+
+            <p>
+                Park access, opening arrangements and applicable fees can vary.
+                Confirm the current official requirements and charges before
+                making your booking.
+            </p>
+
+            <h3>Ready to Visit?</h3>
+
+            <p>
+                Tell us your preferred dates, number of travellers and the
+                wildlife experiences you'd like to enjoy.
+            </p>
+
+            <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+                🧭 Plan This Trip With Us
+            </button>
+        `;
+
+        details.style.display = "block";
+        details.scrollIntoView({ behavior: "smooth" });
+    }
+    if (destination === "amboseli") {
+    image.src = "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?auto=format&fit=crop&w=1200&q=80";
+    image.alt = "Amboseli National Park";
+
+    title.textContent = "Amboseli National Park";
+
+        content.innerHTML = `
+            <p>
+                Amboseli National Park is famous for its large elephant
+                herds and spectacular views of Mount Kilimanjaro. Its open
+                plains make it one of Kenya's iconic safari destinations.
+            </p>
+            <p style="text-align:center; margin:25px 35px;">
+    <a href="https://kws.go.ke/park/amboseli-national-park/" target="_blank" rel="noopener noreferrer"
+       style="display:inline-block; padding:13px 24px; background:#006400; color:white; text-decoration:none; border-radius:25px; font-weight:bold;">
+        🌍 Official Amboseli Park Information
+    </a>
+</p>
+
+            <h3>Recommended Experiences</h3>
+
+            <div class="experience-grid">
+
+                <div class="experience">
+                    <h4>🐘 Elephant Safaris</h4>
+                    <p>Look for Amboseli's famous elephant herds as they move across the open plains.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>🏔️ Kilimanjaro Views</h4>
+                    <p>Enjoy spectacular views of Mount Kilimanjaro when conditions provide clear visibility.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>🦁 Game Drives</h4>
+                    <p>Explore the park's plains and search for lions, buffalo, giraffes and other wildlife.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>📸 Wildlife Photography</h4>
+                    <p>Capture elephants, landscapes and the dramatic mountain backdrop.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>🌅 Sunrise & Sunset</h4>
+                    <p>Experience the changing light across the Amboseli plains during safari.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>🌿 Amboseli Ecosystem</h4>
+                    <p>Discover the wetlands, grasslands and other habitats that support the park's wildlife.</p>
+                </div>
+
+            </div>
+
+            <h3>Planning Your Visit</h3>
+
+            <p>
+                Park access, activities and applicable fees can vary.
+                Confirm the current official requirements and charges before
+                making your booking.
+            </p>
+
+            <h3>Ready to Visit?</h3>
+
+            <p>
+                Tell us your preferred dates, number of travellers and the
+                safari experiences you're interested in.
+            </p>
+
+            <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+                🧭 Plan This Trip With Us
+            </button>
+        `;
+
+        details.style.display = "block";
+        details.scrollIntoView({ behavior: "smooth" });
+    }
+    if (destination === "victoria") {
+image.src = "https://commons.wikimedia.org/wiki/Special:Redirect/file/Lake%20Victoria%20IMG%2020200206%20185439.jpg";
+image.alt = "Lake Victoria, Kenya";
+
+    title.textContent = "Lake Victoria";
+
+        content.innerHTML = `
+            <p>
+                Lake Victoria is Africa's largest lake by surface area and
+                offers beautiful scenery, fishing communities, boat trips and
+                opportunities to experience the culture of the surrounding
+                region.
+            </p>
+            <p style="text-align:center; margin:25px 35px;">
+    <a href="https://visitkisumu.go.ke/destination/lake-victoria/" target="_blank" rel="noopener noreferrer"
+       style="display:inline-block; padding:13px 24px; background:#006400; color:white; text-decoration:none; border-radius:25px; font-weight:bold;">
+        🌍 Official Lake Victoria Information
+    </a>
+</p>
+
+            <h3>Recommended Experiences</h3>
+
+            <div class="experience-grid">
+
+                <div class="experience">
+                    <h4>⛵ Boat Trips</h4>
+                    <p>Enjoy a boat excursion and take in the scenery across the lake.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>🎣 Fishing Experience</h4>
+                    <p>Learn about the fishing traditions and livelihoods of communities around the lake.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>🌅 Lakeside Views</h4>
+                    <p>Relax and enjoy beautiful views across the water, especially around sunrise and sunset.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>🛶 Island Adventures</h4>
+                    <p>Explore suitable islands and lakeside areas through locally organised excursions.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>🛖 Local Culture</h4>
+                    <p>Discover the traditions, food and everyday life of communities around Lake Victoria.</p>
+                </div>
+
+                <div class="experience">
+                    <h4>📸 Photography</h4>
+                    <p>Capture lakeside landscapes, boats, wildlife and local life around the lake.</p>
+                </div>
+
+            </div>
+
+            <h3>Planning Your Visit</h3>
+
+            <p>
+                Activities and prices vary by location and local operator.
+                Confirm current availability, safety arrangements and prices
+                before booking.
+            </p>
+
+            <h3>Ready to Visit?</h3>
+
+            <p>
+                Tell us your preferred dates, number of travellers and the
+                experiences you'd like to enjoy around Lake Victoria.
+            </p>
+
+            <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+                🧭 Plan This Trip With Us
+            </button>
+        `;
+
+        details.style.display = "block";
+        details.scrollIntoView({ behavior: "smooth" });
+
+        document.querySelector(".destinations").style.display = "none";
+
+    }
+
+}
+function closeDestination() {
+    document.getElementById("destination-details").style.display = "none";
+    document.querySelector(".destinations").style.display = "flex";
+}
+function searchDestinations() {
+    const search = document.getElementById("destinationSearch").value.toLowerCase();
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+
+        if (text.includes(search)) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+
+function toggleFAQ(button) {
+    const answer = button.nextElementSibling;
+    const icon = button.querySelector("span");
+
+    answer.classList.toggle("show");
+
+    if (answer.classList.contains("show")) {
+        icon.textContent = "−";
+    } else {
+        icon.textContent = "+";
+    }
+}
+</script>
+
+<footer class="footer">
+    <h2>Explore Kenya Tourism</h2>
+
+    <p>
+        Discover wildlife, beaches, mountains, culture and unforgettable
+        Kenyan adventures.
+    </p>
+
+    <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#destinations">Destinations</a>
+        <a href="#contact">Contact Us</a>
+    </div>
+    <div class="footer-contact">
+    <a href="tel:+254714177622">📞 +254 714 177 622</a>
+    <a href="https://wa.me/254102100048">💬 WhatsApp</a>
+    <a href="mailto:thuojunior938@gmail.com">📧 Email Us</a>
+</div>
+
+    <p class="copyright">
+        © 2026 Explore Kenya Tourism. All rights reserved.
+    </p>
+</footer>
+
 </body>
 </html>
+   
