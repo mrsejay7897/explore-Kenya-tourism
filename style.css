@@ -299,3 +299,25 @@ ul {
         width: 100%;
     }
 }
+.about {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 50px 25px;
+    text-align: center;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.about h2 {
+    color: #006400;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.about p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 15px;
+}
