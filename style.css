@@ -1113,38 +1113,4 @@ ul {
     .services-grid {
         grid-template-columns: 1fr;
     }
-body.light-mode {
-  background-color: #ffffff !important;
-  color: #222222 !important;
-}
-
-body.light-mode header,
-body.light-mode nav,
-body.light-mode main,
-body.light-mode section,
-body.light-mode footer,
-body.light-mode article,
-body.light-mode .card,
-body.light-mode .box {
-  background-color: #ffffff !important;
-  color: #222222 !important;
-}
-
-body.light-mode h1,
-body.light-mode h2,
-body.light-mode h3,
-body.light-mode h4,
-body.light-mode p,
-body.light-mode span,
-body.light-mode li {
-  color: #222222 !important;
-}
-
-body.light-mode a {
-  color: #0066cc !important;
-}
-
-/* Keep images and photos normal */
-body.light-mode img {
-  filter: none !important;
 }
