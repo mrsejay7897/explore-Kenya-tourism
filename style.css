@@ -1114,3 +1114,7 @@ ul {
         grid-template-columns: 1fr;
     }
 }
+.plan-link {
+  font-size: 13px !important;
+  white-space: nowrap;
+}
