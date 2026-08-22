@@ -1113,25 +1113,35 @@ ul {
     .services-grid {
         grid-template-columns: 1fr;
     }
-.theme-toggle {
+body.light-mode {
+  background: #ffffff !important;
+  color: #222222 !important;
+}
+
+body.light-mode header,
+body.light-mode section,
+body.light-mode .card,
+body.light-mode .box,
+body.light-mode .container {
+  background-color: #ffffff !important;
+}
+
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode p,
+body.light-mode li,
+body.light-mode a {
+  color: #222222 !important;
+}
+
+#themeToggle {
   position: fixed;
   top: 15px;
   right: 15px;
-  z-index: 9999;
-}
-
-.theme-toggle button {
-  padding: 7px 12px;
+  z-index: 999999;
+  padding: 8px 12px;
   border: none;
   border-radius: 20px;
   cursor: pointer;
-  font-size: 13px;
-  background: white;
-  color: #222;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
-
-body.light-mode {
-  background: white !important;
-  color: #222 !important;
 }
