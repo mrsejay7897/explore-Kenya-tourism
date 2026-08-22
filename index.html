@@ -52,11 +52,6 @@
 </style>
 </head>
 <body>
-    <div class="theme-toggle">
-  <button onclick="document.body.classList.toggle('light-mode')">
-    ☀️ Light / 🌙 Dark
-  </button>
-</div>
     <header class="site-header">
     <h1>Explore Kenya Tourism</h1>
     <p>Discover Kenya. Experience the Adventure.</p>
@@ -1110,11 +1105,15 @@ function toggleFAQ(button) {
         © 2026 Explore Kenya Tourism. All rights reserved.
     </p>
 </footer>
-    <div class="theme-toggle" style="position:fixed; top:15px; right:15px; z-index:999999;">
-  <button onclick="document.body.classList.toggle('light-mode')" style="cursor:pointer;">
-    ☀️ Light / 🌙 Dark
-  </button>
-</div>
+<button id="themeToggle" style="position:fixed;top:15px;right:15px;z-index:999999;padding:8px 12px;border:0;border-radius:20px;cursor:pointer;">
+☀️ Light / 🌙 Dark
+</button>
+
+<script>
+document.getElementById("themeToggle").onclick = function() {
+  document.body.classList.toggle("light-mode");
+};
+</script>
 </body>
 </html>
    
